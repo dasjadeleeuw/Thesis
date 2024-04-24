@@ -4,7 +4,7 @@ function gm_mask = grey_matter_mask(pp_nr, path, fn)
     % Add 'whole_brain' to filename to obtain whole-brain mask
 
 
-    path_mask = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Femke Ruijs\Dasja de Leeuw\'; 
+    path_mask = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Dasja de Leeuw\'; 
     filename_mask = [path_mask, 'data_pp', int2str(pp_nr) '\masks\', fn, '_pp', int2str(pp_nr), '.nii'];
 
     if exist(filename_mask, 'file') ~= 2
