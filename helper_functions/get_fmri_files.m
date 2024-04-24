@@ -2,7 +2,7 @@ function [path, fmri_files] = get_fmri_files(pp_nr)
 % Returns paths to raw fMRI files
 
 if pp_nr == 1
-    path = "O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Femke Ruijs\fMRI data participant 01\S01WMWM\";
+    path = "...\fMRI data participant 01\S01WMWM\";
     fmri_files =  [ "Session1\mrVistaSession\clp_lo_EPI_01.nii"    %run 1
                         "Session1\mrVistaSession\clp_lo_EPI_02.nii"    %run 2
                         "Session1\mrVistaSession\clp_lo_EPI_03.nii"    %run 3
@@ -32,7 +32,7 @@ if pp_nr == 1
                         "Session4\mrVistaSession\clp_lo_EPI_08.nii"    %run 27
                                                                         ];
 elseif pp_nr == 2
-    path = "O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Femke Ruijs\fMRI data participant 02\S02\";
+    path = "...\fMRI data participant 02\S02\";
     fmri_files =  [ "Session1a\mrVistaSession\clp_lo_EPI_01.nii"    %run 1
                         "Session1b\mrVistaSession\clp_lo_EPI_01.nii"    %run 2
                         "Session1b\mrVistaSession\clp_lo_EPI_02.nii"    %run 3
@@ -62,7 +62,7 @@ elseif pp_nr == 2
                         "Session3\mrVistaSession\clp_lo_EPI_06.nii"    %run 27
                                                                         ];
 elseif pp_nr == 3
-    path = "O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Femke Ruijs\fMRI data participant 03\";
+    path = "...\fMRI data participant 03\";
     fmri_files =  [ "s23\WMWM_Session1\mrVistaSession\clp_lo_EPI_04.nii"    %run 1
                         "s23\WMWM_Session1\mrVistaSession\clp_lo_EPI_06.nii"    %run 2
                         "s23\WMWM_Session1\mrVistaSession\clp_lo_EPI_07.nii"    %run 3
