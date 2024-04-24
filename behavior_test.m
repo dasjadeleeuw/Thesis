@@ -2,7 +2,7 @@
 
 pp_nr = 3;
 nr_perms = 10000;
-path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Femke Ruijs\Dasja de Leeuw\'; 
+path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Dasja de Leeuw\'; 
 
 % Get expertimental results files
 [mask_path, exp_results_files, exp_conditions_files] = get_exp_files(pp_nr);
