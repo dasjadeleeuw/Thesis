@@ -10,7 +10,7 @@ mask = ['grey_matter_mask_whole_pp', int2str(pp_nr)]; % ['grey_matter_mask_whole
 % !If condition mask is used, be sure to change output file name!
 op = 1; % if op=1 test the opposite orientation
 % !If op=1, be sure to change the output file name!
-path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Femke Ruijs\Dasja de Leeuw\'; 
+path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Dasja de Leeuw\'; 
 
 
 for cond = conditions
