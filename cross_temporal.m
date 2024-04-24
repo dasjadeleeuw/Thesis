@@ -9,7 +9,7 @@ pp_nr = 3;                                  % pp 1-3
 ami_umi = 1;                                % ami = 1; umi = 2
 mask_name = 'grey_matter_mask_whole';       % grey_matter_mask_whole, grey_matter_mask or test_mask
 nr_perms = 1000;
-path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Femke Ruijs\Dasja de Leeuw\'; 
+path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Dasja de Leeuw\'; 
 
 
 % Access relevant folders
