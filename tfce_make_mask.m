@@ -5,7 +5,7 @@
 pp_nr = 3;
 condition = 'cross_temp_dist0';
 tailed = 1;
-path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Femke Ruijs\Dasja de Leeuw\'; 
+path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Dasja de Leeuw\'; 
 
 
 % Load the tfce results
