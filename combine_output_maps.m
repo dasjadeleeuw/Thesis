@@ -8,7 +8,7 @@ for pt = 1:2
     condition = ['cross_temp_diff', '_pt' int2str(pt)]; % for output filename
     condition_1 = ['cross_temp_dist0_pt', int2str(pt)]; 
     condition_2 = ['cross_temp_dist2_pt', int2str(pt)];  
-    path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Femke Ruijs\Dasja de Leeuw\'; 
+    path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Dasja de Leeuw\'; 
 
     % Load the maps
     result_maps_1 = load_result_maps(path, pp_nr, condition_1);
