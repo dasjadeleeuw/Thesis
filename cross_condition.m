@@ -9,7 +9,7 @@ pp_nr = 1;
 mask_name = 'test_mask';
 nr_perms = 1000;
 delay = 1;
-path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Femke Ruijs\Dasja de Leeuw\'; 
+path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Dasja de Leeuw\'; 
 
 
 % Access relevant folders
