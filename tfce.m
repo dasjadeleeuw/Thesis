@@ -1,18 +1,19 @@
-%% Perform tfce on searchlight output
+%% Perform tfce on searchlight output map
 
 
 % Define globals
 pp_nr = 1;
 conditions = ["cross_decoding_2_1", "cross_decoding_1_2"];  
 nr_perms = 1000;
-sign_flip_save = 1; % 1 for save
-mask = ['grey_matter_mask_whole_pp', int2str(pp_nr)]; % ['grey_matter_mask_whole_pp', int2str(pp_nr)]
+sign_flip_save = 1; % 1 for saving sign-flipped data
+mask = ['grey_matter_mask_whole_pp', int2str(pp_nr)]; 
 % !If condition mask is used, be sure to change output file name!
 op = 1; % if op=1 test the opposite orientation
 % !If op=1, be sure to change the output file name!
 path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Dasja de Leeuw\'; 
 
 
+% Run tfce for specified conditions
 for cond = conditions
     condition = convertStringsToChars(cond);
 
@@ -82,26 +83,6 @@ function [obs_map, perm_maps] = load_results(path, pp_nr, mask_name, condition, 
     for i = 1:nr_perms
         perm_maps{i} = cosmo_slice(result_maps, i+2); % indices perm_maps start at 3
     end
-end
-
-
-% For SL results in 1 file
-function [obs_map, perm_maps] = load_results_1_file(path, pp_nr, mask_name, condition, nr_perms)
-    fn = [path, 'data_pp', int2str(pp_nr), '\', condition, '.nii'];
-    mask = [path, 'data_pp', int2str(pp_nr), '\masks\', mask_name, '.nii'];
-    result_maps = cosmo_fmri_dataset(fn, 'mask', mask);
-
-    % Adding targets and chunks to help out cosmo
-    length_ds = size(result_maps.samples,1);
-    result_maps.sa.targets((1:length_ds), 1) = 1;
-    result_maps.sa.chunks((1:length_ds), 1) = 1;
-
-    % Taking the first map as the observed map (with actual IEM results)
-    obs_map = cosmo_slice(result_maps, 1);
-    % Make a (1 x nr_perms) cell to store permuted maps as separate structs
-    perm_maps = cell(1, nr_perms);
-    for i = 1:nr_perms
-        perm_maps{i} = cosmo_slice(result_maps, i+2); % indices perm_maps start at 3
-    end
+    
 end
 
