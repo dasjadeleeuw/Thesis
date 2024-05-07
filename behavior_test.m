@@ -1,3 +1,5 @@
+% Check whether participants were able to adequately reproduce the uncued stimulus orientation
+% in the second recall task, in switch-trials. 
 
 
 pp_nr = 3;
@@ -26,7 +28,7 @@ end
 
 %% Observed data
 % Load the absolute errors
-errors = load(exp_results_files).error(4,:); % 3rd row: absolute error second delay
+errors = load(exp_results_files).error(3,:); % 3rd row: absolute error second delay
 % boxplot(errors)
 
 % Make a list of mae's from second delay for switch trials
@@ -86,14 +88,6 @@ disp(p)
 
 
 function error_deg = compute_error(orientation1, orientation2)
-    
-    % Ensure that both orientations are under 180
-    if orientation1 > 179
-        orientation1 = orientation1 - 179;
-    end
-    if orientation1 > 179
-        orientation1 = orientation1 - 179;
-    end
 
     % Ensure orientations are between 1 and 180
     orientation1 = mod(orientation1, 180);
