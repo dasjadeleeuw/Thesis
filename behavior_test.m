@@ -28,7 +28,7 @@ end
 
 %% Observed data
 % Load the absolute errors
-errors = load(exp_results_files).error(3,:); % 3rd row: absolute error second delay
+errors = load(exp_results_files).error(4,:); % 4th row: absolute error second delay
 % boxplot(errors)
 
 % Make a list of mae's from second delay for switch trials
