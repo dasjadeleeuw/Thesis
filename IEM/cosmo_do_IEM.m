@@ -1,6 +1,6 @@
 function [output] = cosmo_do_IEM(ds_full,varargin)
 % Function that applies IEMs to the specified dataset ds_full using leave one run out cross-validation. 
-% Returns a zscore based on n permutations, either using fidelity or the ranking index as a 
+% Returns a p-value based on n permutations, either using fidelity or the ranking index as a 
 % performance measure. 
 % IEM CODE BY RADEMAKER & CHUNHARAS (2019)
 
