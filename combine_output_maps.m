@@ -1,7 +1,7 @@
-%% Load maps and combine them in any way
+%% Load output maps and combine their results, either by averaging or subtracting
 
 
-for pt = 1:2
+for pt = 1:2 % output maps are saved in two parts
 
     % Globals 
     pp_nr = 3; 
@@ -13,12 +13,9 @@ for pt = 1:2
     % Load the maps
     result_maps_1 = load_result_maps(path, pp_nr, condition_1);
     result_maps_2 = load_result_maps(path, pp_nr, condition_2);
-    % result_maps_3 = load_result_maps(path, pp_nr, condition_3);
-    % result_maps_4 = load_result_maps(path, pp_nr, condition_4);
-    
+
     
     %% Average maps together
-    % result_samples = (result_maps_1.samples + result_maps_2.samples + result_maps_3.samples + result_maps_4.samples) / 4;
     % result_samples = (result_maps_1.samples + result_maps_2.samples) / 2;
     
     
