@@ -1,13 +1,11 @@
 %% Entire script to run a searchlight analysis with IEM as measure
-% Cross-temporal decoding of the AMI
-% Check the globals, the data to load, train-test set and filenames for
-% output data
+% Cross-temporal decoding of the CMI
 
 
 % Define globals
 pp_nr = 3;                                  % pp 1-3
-ami_umi = 1;                                % ami = 1; umi = 2
-mask_name = 'grey_matter_mask_whole';       % grey_matter_mask_whole, grey_matter_mask or test_mask
+cmi_umi = 1;                                % cmi = 1; umi = 2
+mask_name = 'grey_matter_mask_whole';       % grey_matter_mask_whole or test_mask
 nr_perms = 1000;
 path = 'O:\Research\FSW\Research_data\PF\Leerstoel Stigchel\Surya Gayet\Student projects\Dasja de Leeuw\'; 
 
@@ -26,15 +24,15 @@ mask = grey_matter_mask(pp_nr, mask_path, mask_name);
 kept_trials = keep_trials(pp_nr, exp_results_files);
 
 
-%% Load the TWO datasets (delay parts)
-% Get orientations - for ami or umi
-delay_oris = get_orientations(exp_conditions, ami_umi, total_nr_trials);
+%% Load the TWO datasets (delay parts 1 (early) and 3 (late))
+% Get orientations - for cmi or umi
+delay_oris = get_orientations(exp_conditions, cmi_umi, total_nr_trials);
 
 % Chunks to indicate which data entry belongs to which run
 runs = (1:27);
 run_chunks = extend_array(runs, 12)'; % transpose
 
-% Load data for all TWO delay parts into a cell
+% Load data for both TWO delay parts into a cell
 fmri_data = cell(1,2);
 for delay_part = [1,3]
 
@@ -52,11 +50,6 @@ for delay_part = [1,3]
     fmri_data_delay.sa.chunks = run_chunks;
     fmri_data_delay.sa.targets = delay_oris;
     fmri_data_delay = cosmo_slice(fmri_data_delay, kept_trials);
-
-    % Data is in one part
-%     fmri_data_delay_file = [path, 'data_pp', int2str(pp_nr), '\z_scores\z_scores_delay_part_', int2str(delay_part), '.nii'];
-%     fmri_data_delay = cosmo_fmri_dataset(fmri_data_delay_file, 'mask', mask, 'targets', delay_oris, 'chunks', run_chunks);
-%     fmri_data_delay = cosmo_slice(fmri_data_delay, kept_trials);
 
     % Add data for this delay part to the cell
     fmri_data{delay_part} = fmri_data_delay;
@@ -96,8 +89,6 @@ for pt1 = [1,3]
         opt.pp_nr               =   pp_nr;
         opt.real_labels         =   test_labels;
         opt.shuffled_labels     =   shuffled_labels;
-        opt.test_condition      =   'delay';
-        opt.train_condition     =   'delay';
         
         
         % Run SL ~this is where the magic happens~
@@ -124,37 +115,4 @@ for pt1 = [1,3]
 end
 
 disp('Cross-temporal decoding analyses complete!')
-disp(datetime)
-
-
-
-%% -----------------------------------------------------TFCE FUNCTIONS------------------------------------------------------- %%
-function [obs_map, perm_maps] = get_result_maps(result_maps, nr_perms)
-    % Adding targets and chunks to help out cosmo
-    length_ds = size(result_maps.samples,1);
-    result_maps.sa.targets((1:length_ds), 1) = 1;
-    result_maps.sa.chunks((1:length_ds), 1) = 1;
-
-    % Taking the first map as the observed map (with actual IEM results)
-    obs_map = cosmo_slice(result_maps, 1);
-    % Make a (1 x nr_perms) cell to store permuted maps as separate structs
-    perm_maps = cell(1, nr_perms);
-    for i = 1:nr_perms
-        perm_maps{i} = cosmo_slice(result_maps, i+2); % indices perm_maps start at 3
-    end
-end
-
-function [tfce_results] = do_tfce(obs_map, perm_maps)
-    opt                 =   struct();
-    opt.feature_stat    =   'none';
-    opt.null            =   perm_maps;
-    opt.cluster_stat    =   'tfce';
-    opt.dh              =   0.01;
-    opt.h0_mean         =   0;
-    opt.nproc           =   8;
-
-    nbrhood = cosmo_cluster_neighborhood(obs_map);
-
-    [tfce_results] = cosmo_montecarlo_cluster_stat(obs_map, nbrhood, opt); 
-end
 
